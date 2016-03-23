@@ -104,7 +104,7 @@ tabPanel(title=h2(strong("2) Plot")),
                                         label="Set shape to",
                                         choices=c(0:25,"*","."),
                                         selected="1"),
-                            img(src="symbol_shapes.png")
+                            img(src=findmypath("www","symbol_shapes.png"))
                           )
                         ),
                         tabPanel(
