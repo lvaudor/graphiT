@@ -1,0 +1,54 @@
+---
+title: "Produce graphics easily using graphiT"
+author: "Lise Vaudor"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Introduction to graphiT}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+graphiT is a package which allows you to launch an interactive application, the Graphics ToolKat, via a simple call to the function graphiT:
+
+```r
+graphiT()
+```
+
+## Principle of the application
+
+#### Upload your dataset
+
+- Specify your datafile's path, and characteristics
+- Subset data prior to any analysis and plotting if you wish
+
+#### Plot your data 
+
+- Select variables X and Y
+- Select graphic type 
+- Adjust characteristics such as size, color, symbols, axis titles, etc.
+
+#### Export your graphic
+
+- Choose graphic's format among .png, .jpeg, .bmp and .tiff
+- Choose graphic's size
+- Save graphic
+
+## Example data
+
+The application comprises a default dataset that allows the user to test the application's functionalities. This dataset is a (fake) cat-related dataset comprised of 153 individuals and variables:
+
+- haircolor (categorical)
+- hairpattern (categorical)
+- sex (categorical)
+- weight (numeric)
+- age (numeric)
+- foodtype (categorical)
+
+## Installation
+
+For now there is no stable version from CRAN. If you want to install the dev version run:
+
+install.packages("devtools")  # If necessary
+devtools::install_github("juba/scatterD3")
+devtools::install_github("juba/explor")
