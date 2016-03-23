@@ -3,6 +3,10 @@ output$mylogo <- renderImage({
                        width="300px",height="300px")
 }, deleteFile = FALSE)
 
+output$symbol_shapes <- renderImage({
+  list(src=findmypath("www","symbol_shapes.png"),
+       width="225px",height="212px")
+}, deleteFile = FALSE)
 
 elems=c("bar",
        "bin2d",
