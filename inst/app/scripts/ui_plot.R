@@ -41,7 +41,7 @@ tabPanel(title=h2(strong("2) Plot")),
                       navlistPanel(
                         tabPanel(imageOutput("catpaw6",height="100%", width="100%"),
                                  br(),
-                                 includeHTML(findmypath("scripts","infoSymbols.html"))
+                                 includeHTML(findmypath("app/scripts","infoSymbols.html"))
                                  ),
                         tabPanel(
                           "Color",
@@ -156,7 +156,7 @@ tabPanel(title=h2(strong("2) Plot")),
                       h4("Features"),
                       navlistPanel(tabPanel(imageOutput("catpaw7",height="100%", width="100%"),
                                             br(),
-                                            includeHTML(findmypath("scripts","infoFeatures.html"))
+                                            includeHTML(findmypath("app/scripts","infoFeatures.html"))
                                             ),
                                    tabPanel(
                                      "Size",

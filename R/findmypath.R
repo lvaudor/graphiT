@@ -9,5 +9,7 @@
 
 findmypath=function(dir,file){
   path=system.file(dir,file,package="graphiT")
+  if(dir==""){path=file}
+  if(path==""){path=dir}
   return(path)
 }

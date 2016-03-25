@@ -11,7 +11,7 @@ fdata=reactive({
   }
 
   if(is.null(input$file)){
-    data=read.csv(findmypath("scripts", "catdata.csv"), sep=";")
+    data=read.csv(findmypath("app/data", "catdata.csv"), sep=";")
   }
   return(data)
 }

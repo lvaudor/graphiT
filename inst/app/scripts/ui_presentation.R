@@ -6,7 +6,7 @@ tabPanel(title=h2(strong("Info")),
             ),
             column(width=7,
                    br(),br(),
-                   includeHTML(findmypath("scripts", "infoPresentation.html")),
+                   includeHTML(findmypath("app/scripts", "infoPresentation.html")),
                    imageOutput("catpaw1", width="100%",height="100%")
             )
           )#fluidRow

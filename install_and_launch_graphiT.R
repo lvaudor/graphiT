@@ -6,8 +6,6 @@ devtools::document("graphiT")
 devtools::install("graphiT")
 
 require(graphiT)
-
-
 #devtools::load_all("graphiT")
 graphiT()
 

@@ -1,10 +1,10 @@
 output$mylogo <- renderImage({
-  list(src=findmypath("www","graphics_toolkat_smalllogo.png"),
+  list(src=findmypath("app/images","graphics_toolkat_smalllogo.png"),
                        width="300px",height="300px")
 }, deleteFile = FALSE)
 
 output$symbol_shapes <- renderImage({
-  list(src=findmypath("www","symbol_shapes.png"),
+  list(src=findmypath("app/images","symbol_shapes.png"),
        width="225px",height="212px")
 }, deleteFile = FALSE)
 
@@ -29,7 +29,7 @@ for(x in 1:length(list_geoms)){
   i=x
   output[[list_geoms[i]]]=renderImage({
     file=paste0("geom_",elems[i],".png")
-    list(src=findmypath("www",file),width="60px",height="50px")
+    list(src=findmypath("app/images",file),width="60px",height="50px")
   },deleteFile=FALSE)
   })
 }
@@ -38,7 +38,7 @@ for(x in 1:10){
   local({  ## sans le "local" tous les outputs renvoient sur une meme image
     i=x
     output[[paste0("catpaw",i)]]=renderImage({
-      list(src=findmypath("www","catpaw.png"),width="18px",height="28px")
+      list(src=findmypath("app/images","catpaw.png"),width="18px",height="28px")
     },deleteFile=FALSE)
   })
 }
