@@ -1,6 +1,6 @@
 ---
-title: "Produce graphics easily using graphiT"
-author: "Lise Vaudor"
+title: "graphiT: Graphics ToolKat interface to produce graphics easily"
+author: "Lise Vaudor, ISIG, UMR5600"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
@@ -44,11 +44,3 @@ The application comprises a default dataset that allows the user to test the app
 - weight (numeric)
 - age (numeric)
 - foodtype (categorical)
-
-## Installation
-
-For now there is no stable version from CRAN. If you want to install the dev version run:
-
-install.packages("devtools")  # If necessary
-devtools::install_github("juba/scatterD3")
-devtools::install_github("juba/explor")

@@ -1,11 +1,8 @@
-#' BWEGEGEK!
+#' Find path to graphiT package
 #'
-#' This function allows you to express your love of cats.
-#' @param love Do you love cats? Defaults to TRUE.
-#' @keywords cats
+#' This function is used internally to find package's path.
+#' @keywords graphiT, graphic, toolkat
 #' @export
-#' @examples
-#' cat_function()
 
 findmypath=function(dir,file){
   path=system.file(dir,file,package="graphiT")

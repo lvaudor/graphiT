@@ -1,19 +1,19 @@
 # graphiT
 
-An interactive application to produce graphics in R
+graphiT is a package which allows you to launch an interactive application, the Graphics ToolKat, via a simple call to the function graphiT:
 
-The graphiT package comes with a function graphiT which launches an interactive application that help users with the production of graphics in R (relying on package ggplot).
-
+```r
+graphiT()
+```
 
 ## Installation
 
-For now there is no stable version from CRAN. If you want to install the dev version run (after making sure you have a recent version of R, ie. R 3.2.x):
-  
+For now there is no stable version of this package on CRAN. If you want to install the dev version run:
+
 ```r
-install.packages("devtools")  # If necessary
+if(!require(devtools)){install.packages("devtools")}
 devtools::install_github("lvaudor/graphiT")
 ```
-
 
 ## Use
 
