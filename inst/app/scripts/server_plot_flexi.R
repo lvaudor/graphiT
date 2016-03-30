@@ -52,7 +52,8 @@ plot_flexi=function(){
                        "geom_rug"=c("color","size","linetype"),
                        "geom_smooth"=c("color","fill","linetype"),
                        "geom_violin"=c("color","fill","linetype"))
-
+  ## mapped variables should appear in ggdata
+  ## variables of dataset are not all included by default to avoid removing lines with NAs
   if(length(list_map)>0){
     for(i in 1:length(list_map)){
       namevar=list_map[[i]]
@@ -61,6 +62,7 @@ plot_flexi=function(){
       colnames(ggdata)[ncol(ggdata)]=namevar
     }
   }
+  ## variables defining facets should appear in ggdata
   if(input$xfacet!="none"){
     ggdata=data.frame(ggdata,
                       data[,which(colnames(data)==input$xfacet)])
@@ -112,7 +114,8 @@ plot_flexi=function(){
   if(geoms[1]!="geom_blank"){
   for(i in 1:length(geoms)){
       list_set_partial=list_set[1]
-      list_set_partial=list_set[geom_symbolism[[geoms[i]]]]
+      condition=names(list_set)%in%geom_symbolism[[geoms[i]]]
+      list_set_partial=list_set[which(condition==TRUE)]
       list_set_partial=list_set_partial[which(list_set_partial!="none")]
       l=do.call(what=geoms[i],args=list_set_partial)
       p=p+l
