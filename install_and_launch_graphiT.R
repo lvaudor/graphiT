@@ -2,6 +2,7 @@
 setwd("..")
 
 devtools::document("graphiT")
+
 #devtools::use_vignette("graphiT_vignette",pkg="graphiT")
 devtools::install("graphiT")
 
