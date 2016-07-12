@@ -3,8 +3,8 @@ Title: What the Package Does (one line, title case)
 Version: 0.0.0.9000
 Authors@R: person("First", "Last", email = "first.last@example.com", role = c("aut", "cre"))
 Description: What the package does (one paragraph).
-Depends: R (>= 3.2.2), Rcpp, xtable, gtable, gdata, gtools,labeling,munsell, scales, vegan, permute, rioja, htmltools, httpuv, plyr, ggplot2, shiny
-Imports: 
+Depends: R (>= 3.2.2)
+Imports: methods, utils, httpuv , mime , jsonlite , xtable, digest, htmltools , R6, digest, grid, gtable, MASS, plyr, reshape2, scales, stats, colorspace, Rcpp, munsell, labeling, shiny, ggplot2
 License: What license is it under?
 LazyData: true
 RoxygenNote: 5.0.1.9000
