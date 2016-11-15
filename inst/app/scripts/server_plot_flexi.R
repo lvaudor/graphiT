@@ -239,10 +239,6 @@ write_geom=function(layer){
   input$vary
   if(mygeom!="geom_none"){
         info=rproperties(layer)
-        print(data.frame(info$properties,
-                         info$name_prop_inputs,
-                         info$types,
-                         info$values))
         ind_set=which(info$types=="set" & 
                       properties_geoms()[[mygeom]]>0 &
                       info$values!=info$defaults)
