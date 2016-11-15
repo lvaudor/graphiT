@@ -9,7 +9,7 @@ deps<- package_dependencies(packages = c("shiny","ggplot2"),
                             which = c("Imports","Depends"),
                             recursive = TRUE, reverse = FALSE)
 deps=as.vector(unlist(deps))
-deps=paste0(deps, collapse=",")
+deps=paste0(c("shiny","ggplot2",deps), collapse=",")
 
 
 #devtools::use_vignette("graphiT_vignette",pkg="graphiT")

@@ -6,7 +6,7 @@ Description: graphiT is a package which allows you to launch an interactive
     application, the Graphics ToolKat, via a simple call to the function graphiT.
 Depends:
     R (>= 3.2.2)
-Imports: utils, httpuv, mime, jsonlite, xtable, digest, htmltools, R6, sourcetools, methods, Rcpp, tools, stats, digest, grid, gtable, MASS, plyr, reshape2, scales, stats, tibble, lazyeval, methods, grDevices, graphics, utils, Rcpp, stringr, RColorBrewer, dichromat, munsell, labeling, assertthat, colorspace, stringi, magrittr, tools
+Imports: shiny, ggplot2, utils, httpuv, mime, jsonlite, xtable, digest, htmltools, R6, sourcetools, methods, Rcpp, tools, stats, digest, grid, gtable, MASS, plyr, reshape2, scales, stats, tibble, lazyeval, methods, grDevices, graphics, utils, Rcpp, stringr, RColorBrewer, dichromat, munsell, labeling, assertthat, colorspace, stringi, magrittr, tools
 License: GPLv3
 LazyData: true
 RoxygenNote: 5.0.1
