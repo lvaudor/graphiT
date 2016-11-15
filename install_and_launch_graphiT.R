@@ -4,7 +4,8 @@ setwd("..")
 devtools::document("graphiT")
 
 require(tools)
-deps<- package_dependencies(packages = c("shiny","ggplot2"), pdb,
+deps<- package_dependencies(packages = c("shiny","ggplot2"),
+                            db=available.packages(),
                             which = c("Imports","Depends"),
                             recursive = TRUE, reverse = FALSE)
 deps=as.vector(unlist(deps))

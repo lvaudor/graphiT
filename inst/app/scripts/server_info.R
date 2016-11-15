@@ -11,16 +11,16 @@ output$infoSubset=renderUI({
 })
 
 output$infoXY=renderUI({
-  if(input$infoXY%%2!=0){
-    wellPanel(includeHTML(findmypath("app/scripts", "infoXY.html")))
-  }
-})
-
-output$infoGraphtype=renderUI({
-  if(input$infoGraphtype%%2!=0){
-    wellPanel(includeHTML(findmypath("app/scripts", "infoGraphtype.html")))
-  }
+    includeHTML(findmypath("app/scripts", "infoXY.html"))
 })
 
 
-
+output$infoGeom1=renderUI({
+  HTML(info_geoms()[[rgeom1()]])
+})
+output$infoGeom2=renderUI({
+  HTML(info_geoms()[[rgeom2()]])
+})
+output$infoGeom3=renderUI({
+  HTML(info_geoms()[[rgeom3()]])
+})

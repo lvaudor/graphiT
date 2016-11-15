@@ -8,33 +8,8 @@ output$symbol_shapes <- renderImage({
        width="225px",height="212px")
 }, deleteFile = FALSE)
 
-elems=c("bar",
-       "bin2d",
-       "boxplot",
-       "density",
-       "density2d",
-       "dotplot",
-       "freqpoly",
-       "hex",
-       "histogram",
-       "jitter",
-       "point",
-       "quantile",
-       "rug",
-       "smooth",
-       "violin")
-list_geoms=paste0("geom_",elems)
-for(x in 1:length(list_geoms)){
-  local({  ## sans le "local" tous les outputs renvoient sur une meme image
-  i=x
-  output[[list_geoms[i]]]=renderImage({
-    file=paste0("geom_",elems[i],".png")
-    list(src=findmypath("app/images",file),width="60px",height="50px")
-  },deleteFile=FALSE)
-  })
-}
 
-for(x in 1:10){
+for(x in c(1:7,"layer1","layer2","layer3")){
   local({  ## sans le "local" tous les outputs renvoient sur une meme image
     i=x
     output[[paste0("catpaw",i)]]=renderImage({

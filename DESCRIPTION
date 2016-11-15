@@ -1,13 +1,16 @@
 Package: graphiT
-Title: What the Package Does (one line, title case)
+Title: Graphics ToolKat interface to produce graphics easily
 Version: 0.0.0.9000
-Authors@R: person("First", "Last", email = "first.last@example.com", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
-Depends: R (>= 3.2.2)
-Imports: methods, utils, httpuv , mime , jsonlite , xtable, digest, htmltools , R6, digest, grid, gtable, MASS, plyr, reshape2, scales, stats, colorspace, Rcpp, munsell, labeling, shiny, ggplot2
+Authors@R: person("Lise", "Vaudor", email = "lise.vaudor@ens-lyon.fr", role = c("aut", "cre"))
+Description: graphiT is a package which allows you to launch an interactive
+    application, the Graphics ToolKat, via a simple call to the function graphiT.
+Depends:
+    R (>= 3.2.2)
+Imports: utils, httpuv, mime, jsonlite, xtable, digest, htmltools, R6, sourcetools, methods, Rcpp, tools, stats, digest, grid, gtable, MASS, plyr, reshape2, scales, stats, tibble, lazyeval, methods, grDevices, graphics, utils, Rcpp, stringr, RColorBrewer, dichromat, munsell, labeling, assertthat, colorspace, stringi, magrittr, tools
 License: GPLv3
 LazyData: true
-RoxygenNote: 5.0.1.9000
-Suggests: knitr,
+RoxygenNote: 5.0.1
+Suggests:
+    knitr,
     rmarkdown
 VignetteBuilder: knitr

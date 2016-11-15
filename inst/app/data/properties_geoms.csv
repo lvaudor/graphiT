@@ -1,0 +1,37 @@
+properties;name_prop_inputs;panels;widgets;quotes;mappable;types;geom_bar;geom_bin2d;geom_boxplot;geom_density;geom_density2d;geom_freqpoly;geom_histogram;geom_jitter;geom_point;geom_quantile;geom_rug;geom_smooth;geom_violin;stat_summary;values;defaults;comments
+color;color;color;radioButtons;TRUE;TRUE;set;2;3;2;2;1;2;2;1;1;1;1;1;2;1;default;default;
+size;size;size;textInput;FALSE;TRUE;set;3;0;3;3;3;3;3;2;2;1;2;3;3;2;;;
+shape;shape;shape;radioButtons;FALSE;TRUE;set;0;0;0;0;0;0;0;3;3;1;0;0;0;3;default;default;
+fill;fill;fill;radioButtons;TRUE;TRUE;set;1;0;1;1;0;1;1;5;0;1;0;2;1;0;default;default;
+linetype;linetype;linetype;radioButtons;FALSE;TRUE;set;4;4;4;3;2;3;3;0;0;1;4;4;4;4;default;default;
+position;position;position;radioButtons;TRUE;FALSE;set;5;0;0;4;0;4;4;0;0;1;0;0;0;0;default;default;
+y;y;y;radioButtons;FALSE;FALSE;map;6;0;0;0;0;0;0;0;0;0;0;0;0;0;default;default;
+method;method;method;radioButtons;TRUE;FALSE;set;0;0;0;0;0;0;0;0;0;0;0;5;0;0;default;default;
+bins;bins;bins;textInput;FALSE;FALSE;set;0;2;0;0;0;6;6;0;0;0;0;0;0;0;;;"<p>Number of bins. Overridden by ""binwidth"". Defaults to 30.</p>"
+binwidth;binwidth;bins;textInput;FALSE;FALSE;set;0;2;0;0;0;6;6;0;0;0;0;0;0;0;;;"<p>The width of the bins. If not provided, ""bins"" is used instead.</p>"
+show.legend;show.legend;show.legend;radioButtons;FALSE;FALSE;set;7;0;7;6;6;7;7;1;5;1;6;6;7;0;default;default;
+alpha;alpha;fill;sliderInput;FALSE;FALSE;set;1;5;1;1;5;1;1;1;4;1;5;2;0;5;1;1;<p>Set transparency.</p><p>1= no transparency,</p><p>0= maximum transparency</p>
+drop;drop;bins;radioButtons;FALSE;FALSE;set;0;2;0;0;0;0;0;0;0;0;0;0;0;0;default;default;<p>If TRUE removes all cells with 0 counts.</p>
+notch;notch;notch;radioButtons;FALSE;FALSE;set;0;0;5;0;0;0;0;0;0;0;0;0;0;0;default;default;"<p>If FALSE (default) make a standard box plot. If TRUE, make a notched box plot.</p> <p> Notches are used to compare groups; if the notches of two boxes do not overlap, this suggests that the medians are significantly different.</p>"
+notchwidth;notchwidth;notch;sliderInput;FALSE;FALSE;set;0;0;5;0;0;0;0;0;0;0;0;0;0;0;1;1;<p>For a notched box plot, width of the notch relative to the body (default 0.5).</p>
+varwidth;varwidth;notch;radioButtons;FALSE;FALSE;set;0;0;5;0;0;0;0;0;0;0;0;0;0;0;default;default;<p>If FALSE (default) make a standard box plot. If TRUE, boxes are drawn with widths proportional to the square-roots of the number of observations in the groups.</p>
+coef;coef;coef;textInput;FALSE;FALSE;set;0;0;6;0;0;0;0;0;0;0;0;0;0;0;;;<p>Length of the whiskers as multiple of interquartile range. Defaults to 1.5.</p>
+bw;bw;adjust;textInput;FALSE;FALSE;set;0;0;0;5;0;0;0;0;0;0;0;0;5;0;;;<p> Used in the calculation of bandwith (standard deviation of smoothing kernel). Bandwidth=bw*adjust </p>
+adjust;adjust;adjust;textInput;FALSE;FALSE;set;0;0;0;5;0;0;0;0;0;0;0;0;5;0;;;<p> Useful only when working with default bw. Bandwidth=bw*adjust</p>
+kernel;kernel;adjust;radioButtons;TRUE;FALSE;set;0;0;0;5;0;0;0;0;0;0;0;0;5;0;default;default;"<p>Smoothing kernel. Defaults to ""gaussian"".</p>"
+n;n;n;textInput;TRUE;FALSE;set;0;0;0;0;4;0;0;0;0;0;0;0;0;0;;;<p>Number of equally spaced points at which the density is to be estimated. When n > 512, it is rounded up to a power of 2 during the calculations (as fft is used) and the final result is interpolated byapprox. So it almost always makes sense to specify n as a power of two.</p>
+binaxis;binaxis;binaxis;radioButtons;TRUE;FALSE;set;0;0;0;0;0;0;0;0;0;0;0;0;0;0;default;default;
+center;center;bins;textInput;FALSE;FALSE;set;0;0;0;0;0;6;6;0;0;0;0;0;0;0;;;"<p>The center of one of the bins (prevents the use of ""boundary"").</p>"
+boundary;boundary;bins;textInput;FALSE;FALSE;set;0;0;0;0;0;6;6;0;0;0;0;0;0;0;;;"<p>A boundary between two bins (prevents the use of ""center"").</p>"
+closed;closed;bins;radioButtons;FALSE;FALSE;set;0;0;0;0;0;6;6;0;0;0;0;0;0;0;default;default;"<p>One of ""right"" or ""left"" indicating whether right or left edges of bins are included in the bin.</p>"
+width;width;width;textInput;FALSE;FALSE;set;0;0;0;0;0;0;0;4;0;0;0;0;0;0;;;<p> Amount of horizontal jitter.</p>
+height;height;width;textInput;FALSE;FALSE;set;0;0;0;0;0;0;0;4;0;0;0;0;0;0;;;<p>Amount of vertical jitter.</p>
+stroke;stroke;size;textInput;FALSE;TRUE;set;0;0;0;0;0;0;0;2;2;1;0;0;0;0;;;
+sides;sides;sides;radioButtons;TRUE;FALSE;set;0;0;0;0;0;0;0;0;0;0;3;0;0;0;default;default;
+se;se;method;radioButtons;FALSE;FALSE;set;0;0;0;0;0;0;0;0;0;0;0;5;0;0;default;default;
+formula;formula;method;textInput;FALSE;FALSE;set;0;0;0;0;0;0;0;0;0;0;0;5;0;0;;;
+draw_quantiles;draw_quantiles;trim;textInput;FALSE;FALSE;set;0;0;0;0;0;0;0;0;0;0;0;0;6;0;;;<p>Draws horizontal lines at the given quantiles of the density estimate.</p>
+trim;trim;trim;radioButtons;FALSE;FALSE;set;0;0;0;0;0;0;0;0;0;0;0;0;6;0;default;default;<p>If TRUE (default), trims the tails of the violins to the range of the data.</p>
+scale;scale;trim;radioButtons;TRUE;FALSE;set;0;0;0;0;0;0;0;0;0;0;0;0;6;0;default;default;"<p>If ""area"" (default), all violins have the same area (before trimming the tails). </p><p>If ""count"", areas are scaled proportionally to the number of observations.</p><p> If ""width"", all violins have the same maximum width.</p>"
+geom;geom;geom;radioButtons;TRUE;FALSE;set;0;0;0;0;0;0;0;0;0;0;0;0;0;6;default;default;
+fun.y;fun.y;geom;textInput;FALSE;FALSE;set;0;0;0;0;0;0;0;0;0;0;0;0;0;6;default;;<p>Indicate an existing function name</p> <p> You can also create custom function, e.g. :</p> <p>function(x) quantile(x, 0.95)</p>

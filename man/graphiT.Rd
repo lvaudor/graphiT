@@ -7,10 +7,13 @@
 graphiT()
 }
 \description{
-This function allows you to launch the Graphic ToolKat. This is a Shiny App designed to help users produce ggplot graphics.
+This function allows you to launch the Graphic ToolKat interface. This is a Shiny App designed to help users produce graphics.
+For more information see package's vignette.
 }
 \examples{
 graphiT()
 }
-\keyword{bwegek}
+\keyword{graphiT,}
+\keyword{graphic,}
+\keyword{toolkat}
 

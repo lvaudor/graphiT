@@ -4,7 +4,10 @@ output$dl_fig <- downloadHandler(
     return(name)
   },
   content=function(file){
-    fgraph=get(input$graph_format)
+    if(input$graph_format=="eps"){fgraph=postscript}
+    if(input$graph_format!="eps"){
+      fgraph=get(input$graph_format)
+    }
     fgraph(file,width=input$width,height=input$height)
     plot_flexi()
     dev.off()

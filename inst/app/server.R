@@ -1,24 +1,13 @@
 shinyServer(function(input, output, session) {
   source(findmypath("app/scripts", "server_data.R"),local=T)
   source(findmypath("app/scripts", "server_info.R"),local=T)
+  source(findmypath("app/scripts", "server_plot_properties.R"),local=T)
   source(findmypath("app/scripts", "server_plot_data.R"),local=T)
   source(findmypath("app/scripts", "server_plot_flexi.R"),local=T)
   source(findmypath("app/scripts", "server_export.R"),local=T)
   source(findmypath("app/scripts", "server_info.R"),local=T)
   source(findmypath("app/scripts", "server_images.R"),local=T)
-  ##################################################################
-  xfacet=reactive({
-    data=fdata_s
-    var=data[,which(colnames(data)==input$xfacet)]
-    return(var)
-  })
-  ########
-  yfacet=reactive({
-    data=fdata_s
-    var=data[,which(colnames(data)==input$yfacet)]
-    return(var)
-  })
-  
+  source(findmypath("app/scripts", "server_script.R"),local=T)
   ##################################################################
   observe({
     data=fdata()
@@ -58,24 +47,58 @@ shinyServer(function(input, output, session) {
     updateSelectInput(session,"vary",choices=vars,selected=vars[1])
   })
   
-  logp1_trans=function(){
+  logp1=function(){
     trans=function(x) log(x+1)
     inv=function(x) exp(x)-1
     scales::trans_new(name="logp1",trans,inv,domain=c(-1,Inf))
   }
-  f_update_input=function(input,arg){
-    type=input[[paste0("type",arg)]]
+  
+  percent=function(){
+    scales::percent
+  }
+  f_update_input=function(arg,layer){
+    nameinput=paste0("type",arg,layer)
+    if(!is.null(input[[nameinput]])){
+    type=input[[nameinput]]
     data=fdata_s()
     datatypes=fdatatypes()
     vars=colnames(data)[which(datatypes=="factor")]
     if(arg=="size"){vars=colnames(data)[which(datatypes=="numeric")]}
-    if(type=="map"){updateSelectInput(session,paste0("map",arg),choices=vars,selected=vars[1])}
+    if(type=="map"){updateSelectInput(session,paste0("map",arg,layer),
+                                      choices=vars,
+                                      selected=vars[1])}
+    }
   }
-  observe({arg="color";   f_update_input(input,arg)})
-  observe({arg="size";    f_update_input(input,arg)})
-  observe({arg="shape";   f_update_input(input,arg)})
-  observe({arg="fill";    f_update_input(input,arg)})
-  observe({arg="linetype";f_update_input(input,arg)})
+  observe({f_update_input("color",    layer=1)})
+  observe({f_update_input("size",     layer=1)})
+  observe({f_update_input("shape",    layer=1)})
+  observe({f_update_input("fill",     layer=1)})
+  observe({f_update_input("linetype", layer=1)})
+  observe({f_update_input("color",    layer=2)})
+  observe({f_update_input("size",     layer=2)})
+  observe({f_update_input("shape",    layer=2)})
+  observe({f_update_input("fill",     layer=2)})
+  observe({f_update_input("linetype", layer=2)})
+  observe({f_update_input("color",    layer=3)})
+  observe({f_update_input("size",     layer=3)})
+  observe({f_update_input("shape",    layer=3)})
+  observe({f_update_input("fill",     layer=3)})
+  observe({f_update_input("linetype", layer=3)})
+  
+  observe({x=input$varx;y=input$vary;updateTextInput(session,"xmin",value="")})
+  observe({x=input$varx;y=input$vary;updateTextInput(session,"xmax",value="")})
+  observe({x=input$varx;y=input$vary;updateTextInput(session,"ymin",value="")})
+  observe({x=input$varx;y=input$vary;updateTextInput(session,"ymax",value="")})
+  
+  observe({
+    combi=rawcombi()
+    x=input$varx
+    y=input$vary
+    if(combi %in% c("nonefactor","nonenumeric","numericfactor")){
+      updateSelectInput(session,"varx",selected=y)
+      updateSelectInput(session,"vary",selected=x)
+    }
+  })
   
   observe({
     x=input$varx; if(x=="none"){x=""}

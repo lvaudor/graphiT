@@ -2,18 +2,14 @@
 % Please edit documentation in R/findmypath.R
 \name{findmypath}
 \alias{findmypath}
-\title{BWEGEGEK!}
+\title{Find path to graphiT package}
 \usage{
 findmypath(dir, file)
 }
-\arguments{
-\item{love}{Do you love cats? Defaults to TRUE.}
-}
 \description{
-This function allows you to express your love of cats.
+This function is used internally to find package's path.
 }
-\examples{
-cat_function()
-}
-\keyword{cats}
+\keyword{graphiT,}
+\keyword{graphic,}
+\keyword{toolkat}
 

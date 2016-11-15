@@ -5,7 +5,8 @@ tabPanel(h2(strong("1) Data")),
            column(width=1,
                   br(),
                   actionButton(inputId="infoLoad",
-                               label=imageOutput("catpaw2",height="100%", width="100%"))
+                               label=imageOutput("catpaw2",height="100%", width="100%")
+                               )
            ),
            column(width=2,
                   fileInput('file', 'in CSV File')
@@ -40,7 +41,8 @@ tabPanel(h2(strong("1) Data")),
            column(width=1,
                   br(),
                   actionButton(inputId="infoSubset",
-                               label=imageOutput("catpaw3",height="100%", width="100%"))
+                               label=imageOutput("catpaw3",height="100%", width="100%")
+                               )
            ),
            column(width=3,
                   selectInput("subsetvar","subset based on variable:",

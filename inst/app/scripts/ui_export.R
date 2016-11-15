@@ -10,7 +10,7 @@ tabPanel(h2(strong("3) Export")),
          column(width=2,
                 selectInput(inputId="graph_format",
                             label="format",
-                            choices=c("png","jpeg","bmp","tiff"),
+                            choices=c("png","jpeg","bmp","tiff","svg","eps"),
                             selected="png")
          )
        ),#fluidRow
