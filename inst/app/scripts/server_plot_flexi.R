@@ -69,7 +69,7 @@ create_ggdata=function(){
 }
 
 write_ggdata=function(ggdata){
-  lines=c("### DATA :")
+  lines=c("### GGDATA : (consider variables used by graphic only)")
   line="ggdata=data.frame("
   for (i in 1:ncol(ggdata)){
     line=paste0(line,colnames(ggdata)[i])
