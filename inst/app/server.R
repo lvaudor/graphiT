@@ -91,6 +91,14 @@ shinyServer(function(input, output, session) {
   observe({x=input$varx;y=input$vary;updateTextInput(session,"ymax",value="")})
   
   observe({
+    x=input$varx
+    y=input$vary
+    updateTabsetPanel(session, "general",selected=2)
+    updateTabsetPanel(session, "tabset_prop", selected="tab_prop_layer1")
+    updateTabsetPanel(session, "tabset_show", selected="tab_show_alllayers")
+  })
+  
+  observe({
     combi=rawcombi()
     x=input$varx
     y=input$vary

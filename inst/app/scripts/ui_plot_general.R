@@ -27,8 +27,10 @@ tabPanel(title=h2(strong("2) Plot")),
         fluidRow(
           column(width=4,
              tabsetPanel(
+               id="tabset_prop",
                tabPanel(
                  h4(strong("Layer 1")),
+                 value="tab_prop_layer1",
                  br(),
                  fluidRow(
                    column(width=3,
@@ -41,6 +43,7 @@ tabPanel(title=h2(strong("2) Plot")),
                ),#tabPanel
                tabPanel(
                  h4(strong("Layer 2")),
+                 value="tab_prop_layer2",
                  br(),
                  fluidRow(
                    column(width=3,
@@ -53,6 +56,7 @@ tabPanel(title=h2(strong("2) Plot")),
                ),
                tabPanel(
                  h4(strong("Layer 3")),
+                 value="tab_prop_layer3",
                  br(),
                  fluidRow(
                    column(width=3,
@@ -67,22 +71,27 @@ tabPanel(title=h2(strong("2) Plot")),
           ),
           column(width=8,align="center",
                   tabsetPanel(
+                    id="tabset_show",
                     tabPanel(h4(strong("Display all")),
+                             value="tab_show_alllayers",
                     wellPanel(
                       br(),plotOutput("plot",height="100%", width="100%")
                     )
                     ),
                     tabPanel(h4(strong("Layer 1 only")),
+                             value="tab_show_layer1",
                              wellPanel(
                                br(),plotOutput("layer1",height="100%", width="100%")
                              )
                     ),
                     tabPanel(h4(strong("Layer 2 only")),
+                             value="tab_show_layer2",
                              wellPanel(
                                br(),plotOutput("layer2",height="100%", width="100%")
                              )
                     ),
                     tabPanel(h4(strong("Layer 3 only")),
+                             value="tab_show_layer3",
                              wellPanel(
                                br(),plotOutput("layer3",height="100%", width="100%")
                              )
