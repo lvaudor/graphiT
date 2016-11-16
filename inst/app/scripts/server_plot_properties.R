@@ -103,6 +103,8 @@ panel_UI_build=function(panel,
 }
 
 allprop_UI_build=function(layer){
+    input$varx
+    input$vary
     data=properties_geoms()
     rgeom=get(paste0("rgeom",layer))
     mygeom=rgeom()

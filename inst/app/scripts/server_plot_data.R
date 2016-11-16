@@ -1,11 +1,15 @@
 
 output$plot=renderPlot({
+      input$varx
+      input$vary
       plot_flexi()
     },
     height=function(x){input$height},
     width=function(x){input$width}
 )
 output$plotexport=renderPlot({
+  input$varx
+  input$vary
   plot_flexi()
 },
 height=function(x){input$exportheight},
@@ -14,18 +18,24 @@ width=function(x){input$exportwidth}
 
 
 output$layer1=renderPlot({
+  input$varx
+  input$vary
   plot_layer(1)
 },
 height=function(x){input$height},
 width=function(x){input$width}
 )
 output$layer2=renderPlot({
+  input$varx
+  input$vary
   plot_layer(2)
 },
 height=function(x){input$height},
 width=function(x){input$width}
 )
 output$layer3=renderPlot({
+  input$varx
+  input$vary
   plot_layer(3)
 },
 height=function(x){input$height},
@@ -130,6 +140,8 @@ fgeom_choices=function(combi){
   }
   if(combi=="numericnumeric"){
     choices = c("geom_point",
+                "geom_line",
+                "geom_area",
                 "geom_jitter",
                 "geom_rug",
                 "geom_bin2d",

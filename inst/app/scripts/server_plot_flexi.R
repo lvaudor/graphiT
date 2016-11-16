@@ -197,7 +197,9 @@ write_facets=function(){
 
 write_colorscale=function(){
   lines=c("## Color scale:")
-  if("continuous_colorscale" %in% names(input)){
+  allgeoms=c(rgeom1(),rgeom2(),rgeom3())
+  if("geom_bin2d" %in% allgeoms){
+    if("continuous_colorscale" %in% names(input)){
       if(input$continuous_colorscale=="scale_fill_gradient"){
         line=paste0("p=p+scale_fill_gradient(low='",striptovalue(input$low),
                     "', high='",striptovalue(input$high),"')")
@@ -210,23 +212,31 @@ write_colorscale=function(){
       }
       if(input$continuous_colorscale=="scale_fill_gradientn"){
         line=paste0("p=p+scale_fill_gradientn(colors=",input$colors,"(",input$ncolors,"))")
-        
       }
-      lines=c(lines,line)
-  }
-  if("discrete_colorscale_fill" %in% names(input)){
-    if(input$discrete_colorscale_fill=="scale_fill_brewer"){
-      line=paste0("p=p+scale_fill_brewer(palette='",striptovalue(input$palette_fill),"')")
-    }
     lines=c(lines,line)
+    }
   }
-  if("discrete_colorscale_color" %in% names(input)){
+  info=rbind(rproperties(1),
+             rproperties(2),
+             rproperties(3))
+  scalable_fill=length(which(info$types=="map" & info$properties=="fill"))
+  scalable_color=length(which(info$types=="map" & info$properties=="color"))
+  if(scalable_fill>0){
+    if("discrete_colorscale_fill" %in% names(input)){
+      if(input$discrete_colorscale_fill=="scale_fill_brewer"){
+        line=paste0("p=p+scale_fill_brewer(palette='",striptovalue(input$palette_fill),"')")
+      }
+    lines=c(lines,line)
+    }
+  }
+  if(scalable_color>0){
+    if("discrete_colorscale_color" %in% names(input)){
     if(input$discrete_colorscale_color=="scale_fill_brewer"){
       line=paste0("p=p+scale_color_brewer(palette='",striptovalue(input$palette_color),"')")
     }
     lines=c(lines,line)
+    }
   }
-  
   if(length(lines)==1){lines=c()}
   return(lines)
 }
