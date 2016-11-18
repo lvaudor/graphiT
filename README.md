@@ -37,3 +37,5 @@ To launch graphiT from your R console simply run:
 library(graphiT)
 graphiT()
 ```
+
+If when launching graphiT you get an error message like "The requested URL could not be retrieved" please check your internet explorer options, and make sure you are not using a proxy for your local connection. 
