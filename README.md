@@ -6,6 +6,10 @@ graphiT is a package which allows you to launch an interactive application, the 
 graphiT()
 ```
 
+## Test graphiT online
+
+You can test this application on the [shinyapps server](https://r-atique.shinyapps.io/graphiT/).
+
 ## Installation
 
 For now there is no stable version of this package on CRAN. If you want to install the dev version, make sure you have a very recent version of R (>3.2.2) and run:
