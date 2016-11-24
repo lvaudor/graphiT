@@ -1,9 +1,8 @@
 name: graphiT
 account: r-atique
 server: shinyapps.io
-appId: 90495
-bundleId: 406405
+bundleId: 623315
 url: https://r-atique.shinyapps.io/graphiT/
-when: 1459342711.15855
+when: 1479895871.00352
 asMultiple: FALSE
 asStatic: FALSE
