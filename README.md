@@ -8,7 +8,7 @@ graphiT()
 
 ## Test graphiT online
 
-You can test this application on the [shinyapps server](https://r-atique.shinyapps.io/graphiT/).
+You can test this application online, here: https://analytics.huma-num.fr/Lise.Vaudor/graphiT/.
 
 ## Installation
 
