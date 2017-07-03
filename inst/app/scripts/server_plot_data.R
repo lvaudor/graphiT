@@ -63,28 +63,28 @@ geom_type_UI_build=function(w,geom_choices,layer){
 ############################################
 output$geom_layer1=renderUI({
   geom_choices=fgeom_choices(fcombi())
-  choices=paste0("<img src='",geom_choices,".png","'>")
-  radioButtons_withHTML('chosengeom1', 'geom 1',
-                        choices =choices ,
-                        inline = TRUE)
+  radioButtons('chosengeom1', 'geom 1',
+                choiceNames =lapply(geom_choices, "f_geom_label"),
+                choiceValues=geom_choices,
+                inline = TRUE)
 })
 
 output$geom_layer2=renderUI({
   geom_choices=fgeom_choices(fcombi())
-  choices=paste0("<img src='",geom_choices,".png'>")
-  choices=c("<img src='geom_none.png'>",choices)
-  radioButtons_withHTML('chosengeom2', 'geom 2',
-                        choices =choices ,
-                        inline = TRUE)
+  geom_choices=c("geom_none",geom_choices)
+  radioButtons('chosengeom2', 'geom 2',
+               choiceNames =lapply(geom_choices, "f_geom_label"),
+               choiceValues=geom_choices,
+               inline = TRUE)
 })
 
 output$geom_layer3=renderUI({
   geom_choices=fgeom_choices(fcombi())
-  choices=paste0("<img src='",geom_choices,".png'>")
-  choices=c("<img src='geom_none.png'>",choices)
-  radioButtons_withHTML('chosengeom3', 'geom 3',
-                        choices =choices ,
-                        inline = TRUE)
+  geom_choices=c("geom_none",geom_choices)
+  radioButtons('chosengeom3', 'geom 3',
+               choiceNames =lapply(geom_choices, "f_geom_label"),
+               choiceValues=geom_choices,
+               inline = TRUE)
 })
 
 
@@ -98,7 +98,7 @@ rawcombi=reactive({
   t2="none";if(length(i2)>0){t2=datatypes[i2]}
   if(t1=="integer"){t1="numeric"}
   if(t2=="integer"){t2="numeric"}
-  if(length(i1)==0 & length(i2)==0){combi="blank"}
+  if(length(i1)==0 & length(i2)==0){combi="none"}
   if(length(i1)>0|length(i2)>0){
     combi=paste0(t1,t2)
   }
@@ -111,8 +111,8 @@ fcombi=reactive({
 
 
 fgeom_choices=function(combi){
-  if(combi=="blank"){
-    choices="blank"
+  if(combi=="none"){
+    choices="geom_none"
   }
   if(combi=="numericnone"){
     choices=c(#"area",
@@ -131,6 +131,7 @@ fgeom_choices=function(combi){
   if(combi=="factornumeric"){
     choices =c(
       "geom_boxplot",
+      "geom_text",
       #"dotplot",
       "geom_violin",
       "geom_point",
@@ -140,6 +141,7 @@ fgeom_choices=function(combi){
   }
   if(combi=="numericnumeric"){
     choices = c("geom_point",
+                "geom_text",
                 "geom_line",
                 "geom_area",
                 "geom_jitter",
@@ -153,7 +155,8 @@ fgeom_choices=function(combi){
   if(combi=="factorfactor"){
     choices=c("geom_jitter",
               #"rug",
-              "geom_bin2d")
+              "geom_bin2d",
+              "geom_text")
   }
   return(choices)
 }
@@ -197,8 +200,9 @@ output$continuouscolors=renderUI({
     if("geom_bin2d" %in% allgeoms){
       myrow=fluidRow(
             column(width=4,
-                   radioButtons("continuous_colorscale","continuous_colorscale",
-                                  choices=c("",
+                   radioButtons(inputId="continuous_colorscale",
+                                label="continuous_colorscale",
+                                choices=c("",
                                           "scale_fill_gradient",
                                           "scale_fill_gradient2",
                                           "scale_fill_gradientn"),
@@ -209,15 +213,17 @@ output$continuouscolors=renderUI({
                      condition="input.continuous_colorscale=='scale_fill_gradient'",
                      fluidRow(
                        column(width=6,
-                              radioButtons_withHTML(inputId="low",
-                                                    label="low",
-                                                    choices=paste0("<img src='color_",mycolors(),".png'>"),
-                                                    selected="<img src='color_red.png'>")
+                              radioButtons(inputId="low",
+                                           label="low",
+                                           choiceNames=lapply(mycolors(),"f_color_label"),
+                                           choiceValues=mycolors(),
+                                           selected='red')
                        ),#column
                        column(width=6,
-                              radioButtons_withHTML(inputId="high",
+                              radioButtons(inputId="high",
                                                     label="high",
-                                                    choices=paste0("<img src='color_",mycolors(),".png'>"),
+                                                    choiceNames=lapply(mycolors(),"f_color_label"),
+                                                    choiceValues=mycolors(),
                                                     selected="<img src='color_blue.png'>")
                        )#column
                      )#fluidRow
@@ -226,21 +232,24 @@ output$continuouscolors=renderUI({
                      condition="input.continuous_colorscale=='scale_fill_gradient2'",
                      fluidRow(
                        column(width=4,
-                              radioButtons_withHTML(inputId="low2",
+                              radioButtons(inputId="low2",
                                                     label="low",
-                                                    choices=paste0("<img src='color_",mycolors(),".png'>"),
+                                                    choiceNames=lapply(mycolors(),"f_color_label"),
+                                                    choiceValues=mycolors(),
                                                     selected="<img src='color_red.png'>")
                        ),#column
                        column(width=4,
-                              radioButtons_withHTML(inputId="mid",
+                              radioButtons(inputId="mid",
                                                     label="mid",
-                                                    choices=paste0("<img src='color_",mycolors(),".png'>"),
+                                                    choiceNames=lapply(mycolors(),"f_color_label"),
+                                                    choiceValues=mycolors(),
                                                     selected="<img src='color_white.png'>")
                        ),#column
                        column(width=4,
-                              radioButtons_withHTML(inputId="high2",
+                              radioButtons(inputId="high2",
                                                     label="high",
-                                                    choices=paste0("<img src='color_",mycolors(),".png'>"),
+                                                    choiceNames=lapply(mycolors(),"f_color_label"),
+                                                    choiceValues=mycolors(),
                                                     selected="<img src='color_blue.png'>")
                        )#column
                      )#fluidRow
@@ -249,7 +258,7 @@ output$continuouscolors=renderUI({
                      condition="input.continuous_colorscale=='scale_fill_gradientn'",
                      fluidRow(
                        column(width=6,
-                              radioButtons_withHTML(inputId="colors",
+                              radioButtons(inputId="colors",
                                                     label="colors",
                                                     choices=c("terrain.colors",
                                                               "heat.colors",
@@ -279,7 +288,8 @@ output$discretecolorsfill=renderUI({
   if(scalable>0){
   myrow=fluidRow(
         column(width=3,
-               radioButtons("discrete_colorscale_fill", "discrete_colorscale_fill",
+               radioButtons("discrete_colorscale_fill", 
+                            "discrete_colorscale_fill",
                             choices=c("",
                                       "scale_fill_brewer"),
                             selected="")
@@ -288,9 +298,10 @@ output$discretecolorsfill=renderUI({
         column(width=3,
                conditionalPanel(
                  condition="input.discrete_colorscale_fill=='scale_fill_brewer'",
-                 radioButtons_withHTML(inputId="palette_fill",
+                 radioButtons(inputId="palette_fill",
                                        label="palette",
-                                       choices=paste0("<img src='palette_",mypalettes(),".png'>"),
+                                       choiceNames=lapply(mypalettes(),"f_palette_label"),
+                                       choiceValues=mypalettes(),
                                        selected=paste0("<img src='palette_","Blues",".png'>")
                  )
                )#conditionalPanel
@@ -318,10 +329,11 @@ output$discretecolorscolor=renderUI({
     column(width=3,
            conditionalPanel(
              condition="input.discrete_colorscale_color=='scale_color_brewer'",
-             radioButtons_withHTML(inputId="palette_color",
-                                   label="palette",
-                                   choices=paste0("<img src='palette_",mypalettes(),".png'>"),
-                                   selected=paste0("<img src='palette_","Blues",".png'>")
+             radioButtons(inputId="palette_color",
+                          label="palette",
+                          choiceNames=lapply(mypalettes(),"f_palette_label"),
+                          choiceValues=mypalettes(),
+                          selected=paste0("<img src='palette_","Blues",".png'>")
              )
            )#conditionalPanel
            

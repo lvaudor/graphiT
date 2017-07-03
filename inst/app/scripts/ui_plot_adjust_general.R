@@ -2,7 +2,7 @@ tabsetPanel(
   tabPanel(
     imageOutput("catpaw7",height="100%", width="100%"),
     br(),
-    includeHTML(findmypath("app/scripts","infoFeatures.html"))
+    includeHTML(findmypath("scripts","infoFeatures.html"))
 ),
 tabPanel(
   "Size",

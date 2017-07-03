@@ -1,5 +1,6 @@
 anywidget=function(widget,
                    inputId,
+                   property,
                    label,
                    value,
                    choices,
@@ -8,10 +9,19 @@ anywidget=function(widget,
                    max,
                    step){
   if(widget=="radioButtons"){
-    mywidget=radioButtons_withHTML(inputId=inputId,
-                                   label=label,
-                                   choices=choices,
-                                   selected=selected)
+        if(property %in% c("color","shape","fill","linetype")){
+            choiceNames=lapply(choices,"fim",property=property)
+            mywidget=radioButtons(inputId=inputId,
+                                  label=label,
+                                  choiceValues=choices,
+                                  choiceNames=choiceNames,
+                                  selected=selected)
+       }else{
+          mywidget=radioButtons(inputId=inputId,
+                                label=label,
+                                choices=choices,
+                                selected=selected)
+       }
   }
   if(widget=="textInput"){
     mywidget=textInput(inputId=inputId,
@@ -47,8 +57,8 @@ panel_UI_build=function(panel,
     mappable=mappables[i]
     widget=widgets[i]
     comment=comments[i]
+    choices=list_choices[[nameinput]]
       if(mappable){
-            choices=list_choices[[nameinput]]
             mypanel=wellPanel(
                      HTML(paste0("<h3>",property,"</h3>")),
                      HTML(comment),
@@ -66,6 +76,7 @@ panel_UI_build=function(panel,
                      conditionalPanel(
                        condition=paste0("input.type",nameinput,layer,"=='set'"),
                        anywidget(widget=widget,
+                                 property=property,
                                  inputId=paste0("set",nameinput,layer),
                                  label=paste0("Set ",property," to"),
                                  choices=choices,
@@ -77,9 +88,10 @@ panel_UI_build=function(panel,
       if(!mappable){
           mypanel=wellPanel(anywidget(widget=widget,
                                       inputId=paste0(nameinput,layer),
+                                      property=property,
                                       label=property,
-                                      choices=list_choices[[nameinput]],
-                                      selected=list_choices[[nameinput]][1],
+                                      choices=choices,
+                                      selected=choices[1],
                                       value=1,
                                       min=0,
                                       max=1,
@@ -111,11 +123,12 @@ allprop_UI_build=function(layer){
       o=order(data[[mygeom]][ind])
       data=data[ind[o],]
       list_choices=list(
-          color=c("default",paste0("<img src='color_",mycolors(),".png'>")),
+          color=c("default",mycolors()),
           size=c("default",1:5),
-          shape=c("default",paste0("<img src='shape_",0:25,".png'>")),
-          fill=c("default",paste0("<img src='color_",mycolors(),".png'>")),
-          linetype=c("default",paste0("<img src='linetype_",1:5,".png'>")),
+          shape=c("default",1:25),
+          fill=c("default",mycolors()),
+          linetype=c("default",1:5),
+          label=c("x",""),
           position=c("default","stack","dodge","fill"),
           show.legend=c("default","TRUE","FALSE"),
           y=c("default","(..count..)/sum(..count..)"),
@@ -140,7 +153,10 @@ allprop_UI_build=function(layer){
           fun.ymin=c("default","min","mean"),
           fun.ymax=c("default","max","mean"),
           geom=c("default","point"),
-          scale=c("default","area","count","width")
+          scale=c("default","area","count","width"),
+          hjust=c("default","left","middle","right","inward","outward"),
+          vjust=c("default","bottom","center","top","inward","outward"),
+          check_overlap=c("default","TRUE","FALSE")
        )
        pinfo=tabPanel(imageOutput(paste0("catpawlayer",layer),height="100%", width="100%"),br(),
                       uiOutput(paste0("infoGeom",layer)))

@@ -1,13 +1,19 @@
 shinyServer(function(input, output, session) {
-  source(findmypath("app/scripts", "server_data.R"),local=T)
-  source(findmypath("app/scripts", "server_info.R"),local=T)
-  source(findmypath("app/scripts", "server_plot_properties.R"),local=T)
-  source(findmypath("app/scripts", "server_plot_data.R"),local=T)
-  source(findmypath("app/scripts", "server_plot_flexi.R"),local=T)
-  source(findmypath("app/scripts", "server_export.R"),local=T)
-  source(findmypath("app/scripts", "server_info.R"),local=T)
-  source(findmypath("app/scripts", "server_images.R"),local=T)
-  source(findmypath("app/scripts", "server_script.R"),local=T)
+  source(findmypath("scripts", "server_data.R"),local=T)
+  source(findmypath("scripts", "server_info.R"),local=T)
+  source(findmypath("scripts", "server_plot_properties.R"),local=T)
+  source(findmypath("scripts", "server_plot_data.R"),local=T)
+  source(findmypath("scripts", "server_plot_flexi.R"),local=T)
+  source(findmypath("scripts", "server_export.R"),local=T)
+  source(findmypath("scripts", "server_info.R"),local=T)
+  source(findmypath("scripts", "server_images.R"),local=T)
+  source(findmypath("scripts", "server_script.R"),local=T)
+  fim=function(val,property){
+    im=property
+    if(property=="fill") im="color"
+    HTML(paste0("<img src='",im,"_",val,".png'>"))
+    
+  }
   ##################################################################
   observe({
     data=fdata()
@@ -74,17 +80,19 @@ shinyServer(function(input, output, session) {
   observe({f_update_input("shape",    layer=1)})
   observe({f_update_input("fill",     layer=1)})
   observe({f_update_input("linetype", layer=1)})
+  observe({f_update_input("label",    layer=1)})
   observe({f_update_input("color",    layer=2)})
   observe({f_update_input("size",     layer=2)})
   observe({f_update_input("shape",    layer=2)})
   observe({f_update_input("fill",     layer=2)})
   observe({f_update_input("linetype", layer=2)})
+  observe({f_update_input("label",    layer=2)})
   observe({f_update_input("color",    layer=3)})
   observe({f_update_input("size",     layer=3)})
   observe({f_update_input("shape",    layer=3)})
   observe({f_update_input("fill",     layer=3)})
   observe({f_update_input("linetype", layer=3)})
-  
+  observe({f_update_input("label",    layer=3)})
   observe({x=input$varx;y=input$vary;updateTextInput(session,"xmin",value="")})
   observe({x=input$varx;y=input$vary;updateTextInput(session,"xmax",value="")})
   observe({x=input$varx;y=input$vary;updateTextInput(session,"ymin",value="")})

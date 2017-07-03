@@ -10,8 +10,8 @@ fdata=reactive({
                 "')")
   }
   if(is.null(input$file)){
-    data=read.csv(findmypath("app/data", "catdata.csv"), sep=";")
-    line="read.csv(findmypath('app/data','catdata.csv'),sep=';')"
+    data=read.csv(findmypath("data", "catdata.csv"), sep=";")
+    line="read.csv(findmypath('data','catdata.csv'),sep=';')"
   }
   data=eval(parse(text=line))
   return(data)

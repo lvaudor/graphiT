@@ -11,7 +11,7 @@ for (i in 1:length(allcolors)){
 
 
 
-allshapes=c(0:25)
+allshapes=c(1:25)
 require(ggplot2)
 for (i in 1:length(allshapes)){
 

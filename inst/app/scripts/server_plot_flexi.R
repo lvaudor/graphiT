@@ -27,7 +27,7 @@ fsummaries=function(){
 }
 
 properties_geoms=function(){  
-  dat=read.csv(findmypath("app/data", "properties_geoms.csv"),
+  dat=read.csv(findmypath("data", "properties_geoms.csv"),
                sep=";",
                stringsAsFactors =FALSE,
                na.strings="NA")
@@ -35,7 +35,7 @@ properties_geoms=function(){
 }
 
 info_geoms=function(){  
-  dat=read.csv(findmypath("app/data", "info_geoms.csv"),
+  dat=read.csv(findmypath("data", "info_geoms.csv"),
                sep=";",
                stringsAsFactors =FALSE)
   return(dat)
@@ -54,8 +54,8 @@ create_ggdata=function(){
              rproperties(3))
   index_mapped_variables=which(info$types=="map" &
                                info$properties!="y" &
-                               !(info$values%in%fsummaries())&
-                               !(info$properties%in%colnames(ggdata))
+                               !(info$values %in% fsummaries()) &
+                               !(info$properties %in% colnames(ggdata))
                                )
   ggdata=data.frame(ggdata,data[as.vector(info$values[index_mapped_variables])])
   ## variables defining facets should appear in ggdata
@@ -231,7 +231,7 @@ write_colorscale=function(){
   }
   if(scalable_color>0){
     if("discrete_colorscale_color" %in% names(input)){
-    if(input$discrete_colorscale_color=="scale_fill_brewer"){
+    if(input$discrete_colorscale_color=="scale_color_brewer"){
       line=paste0("p=p+scale_color_brewer(palette='",striptovalue(input$palette_color),"')")
     }
     lines=c(lines,line)

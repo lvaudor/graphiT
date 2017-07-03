@@ -8,7 +8,9 @@ output$dl_fig <- downloadHandler(
     if(input$graph_format!="eps"){
       fgraph=get(input$graph_format)
     }
-    fgraph(file,width=input$width,height=input$height)
+    print(input$width)
+    print(input$height)
+    fgraph(file,width=input$exportwidth,height=input$exportheight)
     plot_flexi()
     dev.off()
   }

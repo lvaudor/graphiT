@@ -21,7 +21,7 @@ tabPanel(title=h2(strong("2) Plot")),
                   )
            ),
            column(width=10,
-                  source(findmypath("app/scripts", "ui_plot_adjust_general.R"))$value
+                  source(findmypath("scripts", "ui_plot_adjust_general.R"))$value
                   )
          ),#fluidRow
         fluidRow(

@@ -1,17 +1,17 @@
 output$infoLoad=renderUI({
   if(input$infoLoad%%2!=0){
-    wellPanel(includeHTML(findmypath("app/scripts", "infoLoad.html")))
+    wellPanel(includeHTML(findmypath("scripts", "infoLoad.html")))
   }
 })
 
 output$infoSubset=renderUI({
   if(input$infoSubset%%2!=0){
-    wellPanel(includeHTML(findmypath("app/scripts", "infoSubset.html")))
+    wellPanel(includeHTML(findmypath("scripts", "infoSubset.html")))
   }
 })
 
 output$infoXY=renderUI({
-    includeHTML(findmypath("app/scripts", "infoXY.html"))
+    includeHTML(findmypath("scripts", "infoXY.html"))
 })
 
 
