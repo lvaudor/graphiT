@@ -4,7 +4,6 @@ require(ggplot2)
 
 findmypath=function(dir="",file=""){
   path=paste0("../app/",dir,"/",file)
-  print(path)
   if(dir==""){path=file}
   if(file==""){path=dir}
   return(path)
